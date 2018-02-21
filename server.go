@@ -116,3 +116,25 @@ func (__obj *_SCServer) ListenAndServe(__router *mux.Router) error {
 	}
 
 }
+
+//
+// ListenAndServe listens on the TCP network address srv.Addr and
+// then calls Serve to handle requests on incoming connections.
+// Accepted connections are configured to enable TCP keep-alives.
+//
+func ListenAndServe(_router RouteFactory, __port int) error {
+
+	return NewSCServerWithValues(__port).ListenAndServe(_router.Create())
+
+}
+
+//
+// ListenAndServeTLS listens on the TCP network address srv.Addr and
+// then calls Serve to handle requests on incoming TLS connections.
+// Accepted connections are configured to enable TCP keep-alives.
+//
+func ListenAndServeTLS(_router RouteFactory, __port int, __cert_file, __key_file string) error {
+
+	return NewSCServerTLS(__port, __cert_file, __key_file).ListenAndServe(_router.Create())
+
+}

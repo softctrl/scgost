@@ -46,6 +46,13 @@ type Route struct {
 }
 
 //
+// Route Factory.
+//
+type RouteFactory interface {
+	Create() *mux.Router
+}
+
+//
 // Route slices.
 //
 type Routes []Route
