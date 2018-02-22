@@ -49,7 +49,7 @@ type Route struct {
 // Route Factory.
 //
 type RouteFactory interface {
-	Create() *mux.Router
+	Get() *mux.Router
 }
 
 //

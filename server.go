@@ -124,7 +124,7 @@ func (__obj *_SCServer) ListenAndServe(__router *mux.Router) error {
 //
 func ListenAndServe(_router RouteFactory, __port int) error {
 
-	return NewSCServerWithValues(__port).ListenAndServe(_router.Create())
+	return NewSCServerWithValues(__port).ListenAndServe(_router.Get())
 
 }
 
@@ -135,6 +135,6 @@ func ListenAndServe(_router RouteFactory, __port int) error {
 //
 func ListenAndServeTLS(_router RouteFactory, __port int, __cert_file, __key_file string) error {
 
-	return NewSCServerTLS(__port, __cert_file, __key_file).ListenAndServe(_router.Create())
+	return NewSCServerTLS(__port, __cert_file, __key_file).ListenAndServe(_router.Get())
 
 }
